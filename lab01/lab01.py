@@ -22,6 +22,18 @@ def captured_output():
 
 # implement this function
 def is_perfect(n):
+    if(n < 0):
+        return False
+    total = 0
+    x = 1
+    while(x < n):
+        if(n % x == 0):
+            total += x
+        x += 1      
+    if(total == n):
+        return True
+    else:
+        return False
     pass
 
 # (3 points)
@@ -40,6 +52,11 @@ def test1():
 
 # implement this function
 def multiples_of_3_and_5(n):
+    total = 0
+    for i in range(n):
+        if(i % 5 == 0 or i % 3 == 0):
+          total += i   
+    return total
     pass
 
 # (3 points)
@@ -67,6 +84,48 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
+        length = 0
+    strang = ""
+    previous = ""
+    previousCenter = chars[0]
+    nextCenter = ""
+    i = len(chars) - 1
+    while i >= 1:
+        strang = strang + chars[i] + "."  
+        i -= 1
+    for x in chars:
+        if(x != chars[len(chars) - 1]):    
+            strang = strang + x + "."
+        else:
+            strang = strang + x
+    length = len(strang)
+    previous = strang
+    x = 0
+    center = previous.find(previousCenter)
+    newString = previous[0:center-2] + previous[center- 2:center -1] + previous[center +3:len(previous)]
+    while(newString.count(chars[len(chars) - 1]) != 1):
+        center = previous.find(previousCenter)
+    #print("new center" + previous[center- 2:center -1] + "    ")
+    #print("end part of new string " + previous[center] + "    ")
+        newString = previous[0:center-2] + previous[center- 2:center -1] + previous[center +3:len(previous)]
+        newString = newString.center(length, ".")
+        previousCenter = previous[center- 2:center -1]
+    #print("newString " + newString +  "      ")
+        strang = newString + strang + newString
+  #      print("newsrting " + newString + " ")
+  #      print(" previous   " + previous + " ")
+  #      print("previous start" + previous[0:center-2])
+  #      print("previous middle " +  previous[center- 2:center -1])
+  #      print("previous end " + previous[center +3:len(previous)])
+        previous = newString
+
+        x += 1
+    z= 0
+    y = length
+    while(y <= len(strang)):
+        print(strang[z:y])
+        z+= length
+        y += length
     pass
 
 def test4():
