@@ -70,7 +70,21 @@ def test2():
 # EXERCISE 3
 #################################################################################
 def integer_right_triangles(p):
-    pass
+    num = 0
+    first= 1
+    second = 0
+    third = 0
+    while(first < p):
+        second = first
+        while(second < p):
+            third = second
+            while(third < p):
+                if(first + second + third == p and (first + second > third and  second + third >= first and first + third > second) and ((first ** 2) + (second ** 2) == (third ** 2) or (second ** 2) + (third ** 2) == (first ** 2) or (first ** 2) + (third ** 2) == (second ** 2))):
+                    num +=1
+                third += 1
+            second += 1
+        first += 1
+    return num
 
 def test3():
     tc = unittest.TestCase()
