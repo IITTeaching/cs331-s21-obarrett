@@ -57,7 +57,7 @@ def multiples_of_3_and_5(n):
         if(i % 5 == 0 or i % 3 == 0):
           total += i   
     return total
-    pass
+
 
 # (3 points)
 def test2():
@@ -140,7 +140,6 @@ def gen_pattern(chars):
         print(strang[z:y])
         z+= length
         y += length
-    pass
 
 def test4():
     tc = unittest.TestCase()
