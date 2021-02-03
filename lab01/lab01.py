@@ -98,7 +98,15 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-        length = 0
+    if(len(chars) ==  1):
+        print(chars)
+        return
+    elif(len(chars) == 2):
+        print(".." + chars[1:2] + ".." + "    ")
+        print(chars[1:2] + "." + chars[0:1] + "." + chars[1:2])
+        print(".." + chars[1:2] + ".." + "    ")
+        return
+    length = 0
     strang = ""
     previous = ""
     previousCenter = chars[0]
