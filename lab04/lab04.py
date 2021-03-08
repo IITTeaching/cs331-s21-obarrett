@@ -253,16 +253,27 @@ class ArrayList:
     def __len__(self):
         """Implements `len(self)`"""
         ### BEGIN SOLUTION
+        return self.len
         ### END SOLUTION
 
     def min(self):
         """Returns the minimum value in this list."""
         ### BEGIN SOLUTION
+        min = self.data[0]
+        for x in range(0,self.len):
+            if(self.data[x] < min):
+                min = self.data[x]
+        return min   
         ### END SOLUTION
 
     def max(self):
         """Returns the maximum value in this list."""
         ### BEGIN SOLUTION
+        max = self.data[0]
+        for x in range(0,self.len):
+            if(self.data[x] > max):
+                max = self.data[x]
+        return max 
         ### END SOLUTION
 
     def index(self, value, i=0, j=None):
@@ -271,11 +282,25 @@ class ArrayList:
         specified, search through the end of the list for value. If value
         is not in the list, raise a ValueError."""
         ### BEGIN SOLUTION
+        if(j == None or j == -1):
+            for x in range(i,self.len):
+                if(value == self.data[x]):
+                    return x
+        else:
+            for x in range(i,j):
+                if(value == self.data[x]):
+                    return x
+        raise ValueError("error")
         ### END SOLUTION
 
     def count(self, value):
         """Returns the number of times value appears in this list."""
         ### BEGIN SOLUTION
+        num = 0
+        for z in range(0,self.len):
+            if(value == self.data[z]):
+                num += 1
+        return num
         ### END SOLUTION
 
 
