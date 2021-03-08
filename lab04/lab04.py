@@ -3,12 +3,9 @@ import random
 
 class ConstrainedList (list):
     """Constrains the list class so it offers only the following primitive array API:
-
         - `lst[i]` for getting and setting a value at an *existing, positive* index `i`
         - `len(lst)` to obtain the number of slots
-
        All other operations will result in an exception being raised.
-
        DO NOT CHANGE THIS CODE!!!!!
     """
 
@@ -69,9 +66,9 @@ class ConstrainedList (list):
 ################################################################################
 # YOU SHOULD IMPLEMENT THIS CLASS
 class ArrayList:
-    def __init__(self, n=0):
+    def __init__(self, n=1):
         self.data = ConstrainedList(n) # don't change this line!
-        self.len = n # the attribute self.len should be record the length of the list (do not rename!)
+        self.len = 0 # the attribute self.len should be record the length of the list (do not rename!)
 
     ### subscript-based access ###
 
@@ -141,14 +138,14 @@ class ArrayList:
             x += 1
         s = s[0:len(s) - 2]    
         s = s + "]"
-        return s.format()    
+        return s.format()
         ### END SOLUTION
 
 
     ### single-element manipulation ###
 
     def append(self, value):
-        """Appends value to the end of this list."""
+        """Appends value to the end of this list.""" 
         ### BEGIN SOLUTION
         if(self.len >= len(self.data)):
             new = ConstrainedList((self.len)*2)
@@ -158,29 +155,29 @@ class ArrayList:
                 i += 1
             self.data = new   
         self.data[self.len] = value
-        self.len += 1    
+        self.len += 1  
         ### END SOLUTION
 
-    def insert(self, idx, value):
+    def insert(self, idx, value):     
         """Inserts value at position idx, shifting the original elements down the
-        list, as needed. Note that inserting a value at len(self) --- equivalent
+        list, as needed. Note thatself.data = ls inserting a value at len(self) --- equivalent
         to appending the value --- is permitted. Raises IndexError if idx is invalid."""
         ### BEGIN SOLUTION
         ls = ConstrainedList((self.len)+1)
         if(self._normalize_idx((idx)) > len(self.data)):
             raise IndexError("idx is not valid")
         i = 0
-        while(i < self.len): 
+        while(i < self.len):   
             ls[i] = self.data[i]
             i+=1
-        self.data = ls     
+        self.data = ls
         z = self.len
         while(z > idx):
             self.data[z] = self.data[z-1]
             ls = list(self.data._as_list())
             z -= 1        
         self.data[idx] = value
-        self.len +=1 
+        self.len +=1    
         ### END SOLUTION
 
     def pop(self, idx=-1):
@@ -226,7 +223,7 @@ class ArrayList:
         ### BEGIN SOLUTION
         if(not isinstance(other, ArrayList)):
             return False
-        if(other.len != self.len):
+        if(self.len != other.len):
             return False
         x = 0
         while(x < self.len):
@@ -256,14 +253,15 @@ class ArrayList:
         return self.len
         ### END SOLUTION
 
-    def min(self):
+    def min(self):      
         """Returns the minimum value in this list."""
+        
         ### BEGIN SOLUTION
         min = self.data[0]
         for x in range(0,self.len):
             if(self.data[x] < min):
                 min = self.data[x]
-        return min   
+        return min  
         ### END SOLUTION
 
     def max(self):
@@ -342,6 +340,7 @@ class ArrayList:
 
     def extend(self, other):
         """Adds all elements, in order, from other --- an Iterable --- to this list."""
+        
         ### BEGIN SOLUTION
         for x in other: 
             self.append(x)
