@@ -187,6 +187,17 @@ class ArrayList:
         """Deletes and returns the element at idx (which is the last element,
         by default)."""
         ### BEGIN SOLUTION
+        if(self._normalize_idx((idx)) > len(self.data)):
+            raise IndexError("idx invalid")
+        d = self.data[idx]
+        li = ConstrainedList((self.len)-1)
+        for i in range(0,idx):
+            li[i] = self.data[i]
+        for i in range(idx,self.len-1):
+            li[i] = self.data[i +1]
+        self.data = li
+        self.len -=1
+        return d
         ### END SOLUTION
 
     def remove(self, value):
