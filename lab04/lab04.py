@@ -204,6 +204,17 @@ class ArrayList:
         """Removes the first (closest to the front) instance of value from the
         list. Raises a ValueError if value is not found in the list."""
         ### BEGIN SOLUTION
+        for i in range(0,self.len):
+            if(self.data[i] == value):
+                li = ConstrainedList((self.len)-1)
+                for k in range(0,i):
+                    li[k] = self.data[k]
+                for x in range(i,self.len-1):
+                    li[x] = self.data[x+1]
+                self.data =  li
+                self.len -=1
+                return
+        raise ValueError("value not found")
         ### END SOLUTION
 
 
