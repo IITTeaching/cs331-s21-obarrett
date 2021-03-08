@@ -166,6 +166,21 @@ class ArrayList:
         list, as needed. Note that inserting a value at len(self) --- equivalent
         to appending the value --- is permitted. Raises IndexError if idx is invalid."""
         ### BEGIN SOLUTION
+        ls = ConstrainedList((self.len)+1)
+        if(self._normalize_idx((idx)) > len(self.data)):
+            raise IndexError("idx invalid")
+        i = 0
+        while(i < self.len): 
+            ls[i] = self.data[i]
+            i+=1
+        self.data = ls     
+        z = self.len
+        while(z > idx):
+            self.data[z] = self.data[z-1]
+            ls = list(self.data._as_list())
+            z -= 1        
+        self.data[idx] = value
+        self.len +=1 
         ### END SOLUTION
 
     def pop(self, idx=-1):
