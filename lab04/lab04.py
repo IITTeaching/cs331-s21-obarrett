@@ -224,11 +224,25 @@ class ArrayList:
         """Returns True if this ArrayList contains the same elements (in order) as
         other. If other is not an ArrayList, returns False."""
         ### BEGIN SOLUTION
+        if(not isinstance(other, ArrayList)):
+            return False
+        x = 0
+        while(x < self.len):
+            if(self.data[x] != other.data[x]):
+                return False
+            x +=1
+        return True
         ### END SOLUTION
 
     def __contains__(self, value):
         """Implements `val in self`. Returns true if value is found in this list."""
         ### BEGIN SOLUTION
+        x = 0
+        while(x < self.len):
+            if(value == self.data[x]):
+                return True
+            x += 1
+        return False
         ### END SOLUTION
 
 
