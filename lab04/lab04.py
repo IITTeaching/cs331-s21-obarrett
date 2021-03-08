@@ -226,6 +226,8 @@ class ArrayList:
         ### BEGIN SOLUTION
         if(not isinstance(other, ArrayList)):
             return False
+        if(other.len != self.len):
+            return False
         x = 0
         while(x < self.len):
             if(self.data[x] != other.data[x]):
