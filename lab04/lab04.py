@@ -168,7 +168,7 @@ class ArrayList:
         ### BEGIN SOLUTION
         ls = ConstrainedList((self.len)+1)
         if(self._normalize_idx((idx)) > len(self.data)):
-            raise IndexError("idx invalid")
+            raise IndexError("idx is not valid")
         i = 0
         while(i < self.len): 
             ls[i] = self.data[i]
@@ -188,7 +188,7 @@ class ArrayList:
         by default)."""
         ### BEGIN SOLUTION
         if(self._normalize_idx((idx)) > len(self.data)):
-            raise IndexError("idx invalid")
+            raise IndexError("idx is not valid")
         d = self.data[idx]
         li = ConstrainedList((self.len)-1)
         for i in range(0,idx):
