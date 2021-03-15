@@ -281,6 +281,8 @@ class LinkedList:
         other. If other is not an LinkedList, returns False."""
         ### BEGIN SOLUTION
         if(isinstance(other,LinkedList)):
+            if(self.length != other.length):
+                return False
             for x in range(0,other.length):
                 if(self[x] != other[x]):
                     return False
