@@ -43,7 +43,7 @@ class LinkedList:
         """Implements `x = self[idx]`"""
         assert(isinstance(idx, int))
         ### BEGIN SOLUTION
-        if(idx > self.length):
+        if(idx >= self.length):
             raise IndexError("bounds")
         i = idx
         if(idx < 0):
