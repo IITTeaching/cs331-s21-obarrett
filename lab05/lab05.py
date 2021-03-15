@@ -380,7 +380,7 @@ class LinkedList:
         ### BEGIN SOLUTION
         l = LinkedList()
         for x in range(0,self.length):
-            l.append(x)
+            l.append(self[x]))
         return l
         ### END SOLUTION
 
@@ -406,6 +406,10 @@ class LinkedList:
         E.g., for [1,2,3] you shoudl return [3,2,1].
         """
         ### BEGIN SOLUTION
+        l = LinkedList()
+        for x in range(0,self.length): 
+            l.prepend(self[x])
+        return l
         ### END SOLUTION
 
 
