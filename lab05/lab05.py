@@ -111,14 +111,10 @@ class LinkedList:
     def cursor_set(self, idx):
         """sets the cursor to the node at the provided index"""
         ### BEGIN SOLUTION
-        x = 0
-        z = self.head.next
-        while(z.next != None):
-            if(x == idx):
-                self.cursor = z
-                return
-            x += 1
-            z = z.next
+        t = self.head.next
+        for i in range(0, self._normalize_idx(idx)):
+            t = t.next
+        self.cursor = t
         ### END SOLUTION
 
     def cursor_move(self, offset):
@@ -168,8 +164,7 @@ class LinkedList:
         ### BEGIN SOLUTION
         self.cursor.prior.next = self.cursor.next
         self.cursor.next.prior = self.cursor.prior
-        n = self.cursor.next
-        self.cursor = n 
+        self.cursor = self.cursor.next 
         self.length -= 1
         ### END SOLUTION
 
