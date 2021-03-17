@@ -274,6 +274,7 @@ class LinkedList:
                 return z.val
             x += 1
             z = z.next
+        raise ValueError("value not found")
         ### END SOLUTION
 
     ### predicates (T/F queries) ###
