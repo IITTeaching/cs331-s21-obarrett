@@ -166,9 +166,9 @@ class LinkedList:
         following node"""
         assert self.cursor is not self.head and len(self) > 0
         ### BEGIN SOLUTION
+        self.cursor.prior.next = self.cursor.next
         self.cursor.next.prior = self.cursor.prior
         n = self.cursor.next
-        self.cursor.prior.next = self.cursor.next
         self.cursor = n 
         self.length -= 1
         ### END SOLUTION
