@@ -378,7 +378,7 @@ class LinkedList:
         ### BEGIN SOLUTION
         l = LinkedList()
         for x in range(0,self.length):
-            l.append(self[x]))
+            l.append(self[x])
         return l
         ### END SOLUTION
 
