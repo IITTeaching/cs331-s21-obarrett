@@ -15,6 +15,11 @@ class AVLTree:
 
         def rotate_left(self):
             ### BEGIN SOLUTION
+            if(self.balanceFactor(self.right) < 0):
+                self.right.rotate_right()
+            n = self.right
+            self.val, n.val = n.val, self.val
+            self.right, n.right, self.left, n.left = n.right, n.left, n, self.
             ### END SOLUTION
 
         @staticmethod
@@ -31,16 +36,63 @@ class AVLTree:
     @staticmethod
     def rebalance(t):
         ### BEGIN SOLUTION
+        if(height(t.right) - height(t.left) > 1):
+            t.rotate_left()
+        elif(height(t.right) - height(t.left) < -1):
+            t.rotate_right()
+        return t
         ### END SOLUTION
 
     def add(self, val):
         assert(val not in self)
         ### BEGIN SOLUTION
+        def add_helper(val,t):
+            temp = t
+            if (t == None):
+                t = self.Node(val)
+                return t
+            if (val > temp.val):
+                temp.right = add_helper(val,temp.right)
+            elif (val < temp.val):
+                temp.left = add_helper(val,temp.left)
+            temp = self.rebalance(temp)
+            self.size +=1
+            return temp
+        self.root = add_helper(val,self.root)
         ### END SOLUTION
 
     def __delitem__(self, val):
         assert(val in self)
         ### BEGIN SOLUTION
+        def helper(t, val):
+            if(t == None):
+                return t
+            elif(t.val == val):
+                if(t.left == None and t.right == None):
+                    return None
+                elif(t.right != None and t.left == None):
+                    return t.right
+                elif(t.left != None and t.right == None):
+                    return t.left
+                else:
+                    temp = t.left
+                    while temp.right:
+                        temp = temp.right
+                    t.val = temp.val
+                    t.left = helper(t.left, temp.val)
+                    AVLTree.rebalance(t)
+                    return t
+            elif val < t.val:
+                t.left = helper(t.left, val)
+                AVLTree.rebalance(t)
+                return t
+            else:
+                t.right = helper(t.right, val)
+                AVLTree.rebalance(t)
+                return t
+
+        self.root = helper(self.root, val)
+        self.size += -1
         ### END SOLUTION
 
     def __contains__(self, val):
