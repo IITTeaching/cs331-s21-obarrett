@@ -43,5 +43,5 @@ def radix_sort():
             ml = len(i)
     w = book_to_words()
     for x in range(0,lenest_word):
-        w = queueToArray(itemsToQueues(words,x,lenest_word),len(w))
+        w = queueToArray(itemsToQueues(words,x,ml),len(w))
     return w
