@@ -26,14 +26,14 @@ def itemsToQueues(words,k,maxlen):
     return q
 
 def queueToArray(queues,numWords):
-    words = [ [] for i in range(numWords) ]
+    w = [ [] for i in range(numWords) ]
     index = 0
     for i in range(0, len(queues)):
         que = queues[i]
         while len(que) > 0:
-            words[index] = que.pop(0)
+            w[index] = que.pop(0)
             index += 1
-    return words
+    return w
 
 def radix_sort():
     lst = book_to_words()
